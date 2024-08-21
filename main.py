@@ -243,7 +243,8 @@ def main():
     else:
         task_names = pattern_match(args.tasks.split(","), ALL_TASKS)
 
-    accelerator = Accelerator()
+    from optimum.habana.accelerate import GaudiAccelerator
+    accelerator = GaudiAccelerator()
     if accelerator.is_main_process:
         print(f"Selected Tasks: {task_names}")
 
